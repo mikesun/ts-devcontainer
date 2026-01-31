@@ -2,9 +2,9 @@
 
 This is a dev container for TypeScript development intended to provide a secure "sandbox" for running Claude Code and other AI agents. 
 
-Docker Desktop for macOS runs its containers in a lightweight Linux VM, which does provide secure isolation between the Linux VM runing the containers and the macOS host. 
+Docker Desktop for macOS runs its containers in a lightweight Linux VM, which provides secure isolation between the Linux VM runing the containers and the macOS host. 
 
-But Docker containers do not provide secure isolation between themselves because they share the same Linux kernel. In addition, the devcontainer runs in privileged mode in order to run Docker in Docker. DO NOT ASSUME AND RELY ON SECURE ISOLATION BETWEEN CONTAINERS.
+Docker containers do not provide secure isolation between themselves because they share the same Linux kernel. In addition, the devcontainer runs in privileged mode in order to run Docker in Docker. DO NOT ASSUME AND RELY ON SECURE ISOLATION BETWEEN CONTAINERS.
 
 The dev container provides:
 * Node 24 in Debian Linux Trixie
@@ -18,17 +18,23 @@ The dev container provides:
 
 SSH agent forwarding from your Mac is supported, allowing ssh-based git to work.
 
-Note: Since the devcontainer is run within a Linux VM, `node_modules/` will be Linux-based if installed within the devcontainer. Probably best to use a separate clone of the git repo from what's used for dev on locally on the Mac.
+Note: Since the devcontainer is run within a Linux VM, `node_modules/` will be Linux-based if installed within the devcontainer.
 
-## To Use:
+## Usage
 
 Copy the `.devcontainer` directory to any TypeScript project directory and open that project with an IDE or editor that supports dev containers.
 
 ### VSCode
 
-VSCode has native support for running/building devcontainers:
+VSCode has full support for running/building dev containers:
  
 [https://code.visualstudio.com/docs/devcontainers/containers](https://code.visualstudio.com/docs/devcontainers/containers)
+
+### Zed
+
+Zed has partial support fo running/building dev containers:
+
+[https://zed.dev/docs/dev-containers]
 
 ### devcontainer CLI
 
