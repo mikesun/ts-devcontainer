@@ -1,70 +1,56 @@
-# TypeScript Dev Container for Docker Desktop on macOS
+# Node.js TypeScript Dev Container for Docker Desktop
 
-This is a dev container for TypeScript development intended to provide a secure "sandbox" for running Claude Code and other AI agents. 
+This is a Node.js TypeScript dev container intended to provide a secure "sandbox" for running Claude Code and Codex CLI on [Docker Desktop](https://docs.docker.com/desktop/).
 
-Docker Desktop for macOS runs its containers in a lightweight Linux VM, which provides secure isolation between the Linux VM runing the containers and the macOS host. 
+Docker Desktop (macOS, Windows, Linux) runs its containers in its own lightweight Linux VM, which provides secure isolation between the Linux VM running the containers and the host. 
 
-Docker containers do not provide secure isolation between themselves because they share the same Linux kernel. In addition, the devcontainer runs in privileged mode in order to run Docker in Docker. DO NOT ASSUME AND RELY ON SECURE ISOLATION BETWEEN CONTAINERS.
+DO NOT ASSUME AND RELY ON SECURE ISOLATION BETWEEN CONTAINERS. Docker containers do not provide adequate isolation between themselves because they share the same Linux kernel. In addition, the devcontainer runs in privileged mode in order to run Docker in Docker.
 
 The dev container provides:
-* Node 24 in Debian Linux Trixie
+* Node 24 on Debian Linux Trixie
 * pnpm 10
 * bash, fish shells
 * Claude Code, Codex CLI
+* Forwarding of port 3000 of the devcontainer to the host
 * ssh agent forwarding
-* persistent home directory
-* persistent inner docker images/volumes
-* Forwarding of port 3000 of the devcontainer to the macOS host
-
-SSH agent forwarding from your Mac is supported, allowing ssh-based git to work.
-
-Note: Since the devcontainer is run within a Linux VM, `node_modules/` will be Linux-based if installed within the devcontainer.
+* Persistent home directory
+* Persistent inner docker images/volumes
 
 ## Usage
 
-Copy the `.devcontainer` directory to any TypeScript project directory and open that project with an IDE or editor that supports dev containers.
+Copy the `.devcontainer/` directory to any TypeScript project directory and open that project with an IDE or editor that supports dev containers.
 
 ### VSCode
 
-VSCode has full support for running/building dev containers:
- 
-[https://code.visualstudio.com/docs/devcontainers/containers](https://code.visualstudio.com/docs/devcontainers/containers)
+[VSCode]((https://code.visualstudio.com/docs/devcontainers/containers)) has full support for running/building dev containers.
 
 ### Zed
 
-Zed has partial support fo running/building dev containers:
-
-[https://zed.dev/docs/dev-containers]
+[Zed]((https://zed.dev/docs/dev-containers)) has partial support for running/building dev containers.
 
 ### devcontainer CLI
 
-You can also run/build devcontainers via the devcontainer CLI
+You can also run/build devcontainers via the [devcontainer CLI](https://github.com/devcontainers/cli)
 
-#### Install CLI:
+Install CLI:
 
 ```sh
 npm i -g @devcontainers/cli
 ```
 
-#### Build and start devcontainer:
-
-In the directory containing `.devcontainer/`
+Build and start devcontainer from directory containing `.devcontainer/`:
 
 ```sh
 devcontainer up --workspace-folder PATH_TO_PROJECT_DIRECTORY
 ```
 
-#### Open bash shell in devcontainer:
-
-In the directory containing .devcontainer/
+Open bash shell to devcontainer from the directory containing `.devcontainer/`:
 
 ```sh
 devcontainer exec --workspace-folder PATH_TO_PROJECT_DIRECTORY bash
 ```
 
-#### Stop devcontainer:
-
-It's planned but not implemented in the devcontainer CLI yet.
+Stop devcontainer (not yet implemented in the devcontainer CLI):
 
 ```sh
 docker ps -a \
