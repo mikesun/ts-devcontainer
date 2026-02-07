@@ -1,0 +1,12 @@
+{
+	"permissions": {
+		"deny": [
+			"Read(**/.env)",
+			"Read(**/.env.*)",
+			"Bash(sudo:*)",
+			"Bash(ssh:*)",
+			"Bash(scp:*)",
+			"Bash(sftp:*)"
+		]
+	}
+}
